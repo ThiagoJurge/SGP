@@ -10,7 +10,7 @@ const OPSTabs = ({ data }) => {
       key: "1",
       label: `OPS A`,
       children: <OPSInfos way="A" data={data} />,
-    }, data.state.model == "OPS-HB" ? 
+    }, Object.keys(data).length>0 && data.state.model == "OPS-HB" ? 
     {
       key: "2",
       label: `OPS B`,
