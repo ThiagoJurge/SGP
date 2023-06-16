@@ -1,34 +1,33 @@
-import {
-  Col,
-  Divider,
-  Row,
-} from "antd";
+import { Card, Col, Divider, Row } from "antd";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import TreeView from "../TreeView/TreeView";
+import DeviceInfo from "../Devices/DeviceInfo/DeviceInfo";
 
 const DeviceTree = () => {
   const key = useParams().key;
   const [view, setView] = useState(true);
 
   return (
-    <>
-      <Row>
+    <Card>
+      <Row gutter={10}>
         <Col
+          span={5}
           style={{
             overflow: "auto",
-            height: "300px",
-            width: '20%'
+            height: "100vh",
           }}
         >
           <TreeView />
         </Col>
-        <Col hidden={view} style={{width: '80%'}}>
-          <Divider type="vertical" />
-          {/* <DeviceInfo family={keys.family} keys={keys.id} /> */}
+        <Col span={1}>
+          <Divider type="vertical" style={{ height: "100%" }} />
+        </Col>
+        <Col span={18}>
+          <DeviceInfo />
         </Col>
       </Row>
-    </>
+    </Card>
   );
 };
 

@@ -4,12 +4,16 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Tree } from "antd";
 import {
   AmplifierIcon,
-  DefaulIcon,
+  DefaultIcon,
   FanIcon,
   MfHaIcon,
+  MuxDemuxIcon,
   OPSIcon,
-  RootIcon,
+  OcmIcon,
+  RoadmIcon,
   SpvlIcon,
+  SscIcon,
+  TransponderIcon,
 } from "../../icons/Icons";
 import { apiPadtec } from "../../api/api";
 const { DirectoryTree } = Tree;
@@ -42,8 +46,20 @@ const TreeView = () => {
       return <MfHaIcon />;
     } else if (family == "supervisor") {
       return <SpvlIcon />;
+    } else if (family == "mux/demux") {
+      return <MuxDemuxIcon />;
+    } else if (family == "lightpad") {
+      return <DefaultIcon />;
+    } else if (family == "wss") {
+      return <RoadmIcon />;
+    } else if (family == "ocm") {
+      return <OcmIcon />;
+    } else if (family == "transponder") {
+      return <TransponderIcon />;
+    } else if (family == "ssc") {
+      return <SscIcon />;
     } else {
-      return <DefaulIcon />;
+      return <DefaultIcon />;
     }
   }
   async function fetchData() {
@@ -100,9 +116,16 @@ const TreeView = () => {
         try {
           const itens = await apiPadtec.get(`/api/tree/node/${key}`);
           const listItens = itens.data.children.map((item) =>
-            getItem(item.key, item.name, null, true, getIcon(item.family))
+            getItem(
+              item.key,
+              <NavLink to={`/tree/${item.key}/${item.family.replace("/", "")}`}>
+                {item.name}
+              </NavLink>,
+              null,
+              true,
+              getIcon(item.family)
+            )
           );
-          console.log(listItens.map((item) => item));
           setData((origin) =>
             updateTreeData(
               origin,
@@ -113,17 +136,18 @@ const TreeView = () => {
         } catch (error) {}
 
         resolve();
-      }, 1000);
+      }, 10);
     });
 
   return (
-    <DirectoryTree
-      treeData={data}
-      showLine
-      loadData={onLoadData}
-      style={{ textAlign: "left", overflow: "auto" }}
-      defaultExpandedKeys={["1"]}
-    />
+    <>
+      <DirectoryTree
+        treeData={data}
+        showLine
+        loadData={onLoadData}
+        style={{ textAlign: "left" }}
+      />
+    </>
   );
 };
 

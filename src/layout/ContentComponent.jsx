@@ -25,6 +25,7 @@ const ContentComponent = () => {
       >
         <Routes>
           <Route element={<DeviceTree />} path="/tree" />
+          <Route element={<DeviceTree />} path="/tree/:id/:family" />
         </Routes>
       </div>
     </Content>

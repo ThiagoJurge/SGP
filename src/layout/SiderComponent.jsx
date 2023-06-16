@@ -15,10 +15,14 @@ const SiderComponent = () => {
     <Sider
       trigger={null}
       theme="light"
-      collapsible
-      defaultCollapsed={true}
+      collapsed
       style={{
-        background: colorBgContainer,
+        overflow: "auto",
+        height: "100vh",
+        position: "fixed",
+        left: 0,
+        top: 0,
+        bottom: 0,
       }}
     >
       <div className="demo-logo-vertical">

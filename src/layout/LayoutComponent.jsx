@@ -7,7 +7,12 @@ import FooterComponent from "./FooterComponent";
 
 const LayoutComponent = () => {
   return (
-    <Layout hasSiders>
+    <Layout
+      className="site-layout"
+      style={{
+        marginLeft: '80px',
+      }}
+    >
       <SiderComponent />
       <Layout
         style={{

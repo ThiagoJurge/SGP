@@ -15,9 +15,9 @@ const MenuComponent = () => {
     };
   }
 
-  const items = [getItem("Árvore de Equipamentos", 1, <CgListTree />)];
+  const items = [getItem(<NavLink to={'/tree'}>Árvore de Equipamentos</NavLink>, 1, <CgListTree />)];
 
-  return <Menu theme="light" mode="vertical" items={items} />;
+  return <Menu theme="light" mode="inline" items={items} />;
 };
 
 export default MenuComponent;
