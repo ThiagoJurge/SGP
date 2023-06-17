@@ -3,7 +3,7 @@ import { Card } from "antd";
 
 export const GeneralInfo = ({ data, way }) => {
   const gridStyle = {
-    width: "33%",
+    width: "33.3%",
     textAlign: "center",
   };
   function validIfExistis(value) {
@@ -16,7 +16,7 @@ export const GeneralInfo = ({ data, way }) => {
   return (
     <>
       {Object.keys(data).length > 0 && (
-        <Card size="small">
+        <Card size="small" hoverable={false} bordered={false}>
           <Card.Grid style={gridStyle} hoverable={false}>
             Modo Automático:{" "}
             {validIfExistis(

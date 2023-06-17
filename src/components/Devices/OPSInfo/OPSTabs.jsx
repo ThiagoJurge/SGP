@@ -1,6 +1,5 @@
 import { Card, Col, List, Row, Tabs, Timeline } from "antd";
 import React from "react";
-import { RouteInfo } from "./OPSRouteInfo";
 import { OPSInfos } from "./OPSInfos";
 
 const OPSTabs = ({ data }) => {
